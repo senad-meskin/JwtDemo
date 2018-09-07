@@ -1,0 +1,4 @@
+*.dll
+/JwtDemo/bin
+/JwtDemo/obj
+/.vs
