@@ -12,6 +12,17 @@ namespace JwtDemo.Controllers
     [Authorize(Roles = "Administrator")]
     public class ValuesController : ControllerBase
     {
+        [HttpGet("get-my-id")]
+        public ActionResult<string> GetMyId()
+        {
+            var idClaim = User.Claims.FirstOrDefault(x => x.Type.Equals("id", StringComparison.InvariantCultureIgnoreCase));
+            if(idClaim != null)
+            {
+                return Ok($"This is your Id: {idClaim.Value}");
+            }
+            return BadRequest("No claim");
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

@@ -25,12 +25,13 @@ namespace JwtDemo.Controllers
 
             //signing credentials
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
-
-            //add claims
-            var claims = new List<Claim>();
+            
+                //add claims
+                var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
             claims.Add(new Claim(ClaimTypes.Role, "Reader"));
             claims.Add(new Claim("Our_Custom_Claim", "Our custom value"));
+            claims.Add(new Claim("Id", "110"));
 
 
             //create token
